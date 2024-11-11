@@ -42,5 +42,34 @@ function showCountdown(duration) {
     }, 1000);
 }
 
+function chiediNumeriUtente() {
+    instructions.innerText= "Inserisci i numeri che ricordi!";
+    const inputs = document.querySelectorAll("input");
+    for (let i = 0; i < inputs.length; i++) {
+        numbersUser.push(inputs[i].value); 
+    }
 
+    verificaRisultati(); 
+}
+
+function verificaRisultati() {
+    if (numbersUser.length === numbersGuess.length) {
+        let correctGuesses = 0;
+        for (let i = 0; i < numbersUser.length; i++) {
+            if (numbersUser[i] === numbersGuess[i]) {
+                correctGuesses++;
+            }
+        }
+        message.innerText = `${correctGuesses} su ${numbersGuess.length} numeri indovinati!`;
+    } else {
+        message.innerText = "Non hai inserito i numeri giusti!";
+    }
+}
+
+    for (let i = 0; i < 5; i++) {
+        const num = generaNumeroRandom(1, 100);
+        numbersGuess.push(num); 
+    }
+
+    mostraNumeroRandom();
 
