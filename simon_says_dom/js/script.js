@@ -17,14 +17,29 @@ function mostraNumeroRandom() {
     
     const interval = setInterval(function () {
         const randomNum = generaNumeroRandom(1, 100);
-        numbersList.textContent = randomNum;  
+        numbersList.innerText = randomNum;  
     }, 1000); 
 
     setTimeout(function () {
         clearInterval(interval);  
-        numbersList.textContent = ''; 
+        numbersList.innerText = ''; 
         showCountdown(duration); 
     }, duration);
+}
+
+function showCountdown(duration) {
+    let timeLeft = duration / 100;  
+    countdown.innerText = timeLeft;  
+
+    const countdownInterval = setInterval(function () {
+        timeLeft--;
+        countdown.innerText = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            chiediNumeriUtente(); 
+        }
+    }, 1000);
 }
 
 
